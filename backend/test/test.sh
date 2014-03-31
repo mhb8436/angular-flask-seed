@@ -1,0 +1,1 @@
+../flask/bin/python -m unittest $1
