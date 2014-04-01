@@ -5,12 +5,14 @@ To Install this RESTful application, move to backend directory and then type thi
 
 ./setup.py
 
+## run flask server
 after all install file about flask and so on.. to run application type follow command
 
 ./run.sh
 
 then will start server localhost 5001 port. you must not connect to this port using Web Brower.  You have must appropriate token issued by server.  
 
+## create sample user and insert data
 When started server, sqlite3 database will be generated and table related this application will be created, but you need to make proper user to use this applcation. on the termnial type follow command.
 
 curl -i -X POST -H "Content-Type: application/json" -d '{"email":"your email","name":"your name","password":"your password"}' http://localhost:5001/api/v1.0/users/register
