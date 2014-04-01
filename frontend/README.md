@@ -5,7 +5,6 @@ Install grunt
 
 And then be sure to install everything that the repo requires:
 `npm install`
-<!-- `bower install` -->
 
 ### Development Mode
 
