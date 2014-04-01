@@ -1,5 +1,5 @@
 #flask-angular-login-seed
- 
+   
 #This is Seed Project for angular and flask 
 
 If you want to make Single Page Web Application with REST, this project will be help you.  RESTFul Service is made by Python flask. FrontEnd Service is made by angularjs. sometimes used underscore.js. 
