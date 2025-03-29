@@ -1,131 +1,93 @@
-# flask-angular-login-seed the seed for AngularJS apps using flask as backend 
+# Angular Flask Seed Project
 
-This project is an application skeleton for a typical [AngularJS](http://angularjs.org/) web app 
-and [flask] (http://flask.pocoo.org/)  as backend.
+이 프로젝트는 Angular와 Flask를 사용한 웹 애플리케이션 시드 프로젝트입니다.
 
-You can use it to quickly bootstrap your angular webapp projects and restful API service using 
-flask. 
+## 프로젝트 구조
 
-This seed has two directory. one is backend folder which contains all content to running RESTful
-service with flask. And RESTful service use python default web server. 
-other is frontend folder which contains all files to run SPA(Single Page Application) made by 
-angularjs and bootstrap 2.3. This SPA also use web server made by node.js so that you should 
-install node.js and grunt.js.
+```
+.
+├── frontend/          # Angular 프론트엔드
+│   ├── src/          # Angular 애플리케이션 소스
+│   ├── package.json  # Node.js 의존성 설정
+│   └── angular.json  # Angular 설정
+│
+└── backend/          # Flask 백엔드
+    ├── server/      # Flask 서버 소스
+    ├── test/        # 테스트 코드
+    ├── sql/         # SQL 스크립트
+    ├── config.py    # 설정 파일
+    ├── run.py       # 서버 실행 스크립트
+    └── requirements.txt  # Python 의존성 설정
+```
 
-The seed contains AngularJS libraries, test libraries and a bunch of scripts all preconfigured for
-instant web development gratification. Just clone the repository or download tar ball, start up
-our (or yours) webserver and you are ready to develop and test your application.
+## 기술 스택
 
-This project use Python flask as backend restful API sevice.   This seed contains flask libraries 
-you need to configuration restful API service including [http auth library](http://blog.miguelgrinberg.com/post/restful-authentication-with-flask).
+### 프론트엔드
+- Angular 17.1.0
+- TypeScript 5.3.2
+- Angular CLI 17.1.0
+- RxJS 7.8.0
 
-This seed use sqlite3 as default database. If you want to change other database (like mysql), 
-you can change easliy. you do change only one parameter SQLALCHEMY_DATABASE_URI in config.py.
+### 백엔드
+- Flask 3.0.2
+- Flask-SQLAlchemy 3.1.1
+- Flask-WTF 1.2.1
+- Flask-Login 0.6.3
+- Flask-Security-Too 5.3.2
+- Flask-HTTPAuth 4.2.0
+- SQLAlchemy 2.0.27
+- Python 3.8+
 
+## 설치 및 실행 방법
 
-## How to use angular-seed
+### 프론트엔드 설정
+```bash
+cd frontend
+npm install
+```
 
-Clone the angular-seed repository and start hacking...
+### 백엔드 설정
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+venv\Scripts\activate     # Windows
+pip install -r requirements.txt
+```
 
+### 서버 실행
+```bash
+# 백엔드 서버 실행
+cd backend
+python run.py
 
-### Running the app during development
+# 프론트엔드 개발 서버 실행 (새 터미널에서)
+cd frontend
+npm start
+```
 
-You should follow guide.
+## 개발 가이드
 
-1. You should move to backend directory and run `./run.sh` in command line.
-2. After open another command line, move to frontend directory and then run `grunt` command.
+### 프론트엔드 개발
+- `frontend/src/` 디렉토리에서 Angular 애플리케이션 개발
+- Angular CLI를 사용하여 개발 서버 실행 및 빌드
+- TypeScript를 사용한 타입 안전한 개발
 
+### 백엔드 개발
+- `backend/server/` 디렉토리에서 Flask 애플리케이션 개발
+- SQLAlchemy를 사용한 데이터베이스 모델링
+- Flask-Security-Too를 통한 인증 및 권한 관리
 
-Then navigate your browser to `http://localhost:<port>/` to see the app running in
-your browser. 8888 is `<port>`'s default value.
+## 테스트
+```bash
+# 백엔드 테스트
+cd backend
+pytest
 
+# 프론트엔드 테스트
+cd frontend
+npm test
+```
 
-### Running the app in production
-
-This really depends on how complex is your app and the overall infrastructure of your system, but
-the general rule is that all you need in production are all the files under the `/` directory.
-Everything else should be omitted.
-
-Angular apps are really just a bunch of static html, css and js files that just need to be hosted
-somewhere, where they can be accessed by browsers.
-
-If your Angular app is talking to the backend server via xhr or other means, you need to figure
-out what is the best way to host the static files to comply with the same origin policy if
-applicable. Usually this is done by hosting the files by the backend server or through
-reverse-proxying the backend server(s) and a webserver(s).
-
-
-### Running unit tests for RESTful API service
-
-
-
-### Running unit tests for angularjs 
-
-
-
-### Receiving updates from upstream
-
-When we upgrade angular-seed's repo with newer angular or testing library code, you can just
-fetch the changes and merge them into your project with git.
-
-
-## Directory Layout
-
-    backend/                 --> all of the files to be used in RESTful services
-      server/                --> RESTful services app 
-        main/                --> for main or index page RESTful services
-          __init__.py        --> main module default py
-          models.py          --> for main module models
-          views.py           --> for main module view and controllers
-        users/               --> for users or index page RESTful services
-          __init__.py        --> users module default py
-          models.py          --> for users module models
-          views.py           --> for users module view and controllers
-
-        auth.py              --> Http Authorization manipulation 
-        data.py              --> Database CRUD and execution module files
-        util.py              --> Utilization for this app 
-
-      test/                  --> flask unit test directory
-        test.sh              --> python -m unittest execution command file
-        viewtest.py          --> unittest file for view
-
-      base.py                --> base information of app's
-      config.py              --> default directory and database setting directory
-      run.py                 --> flask web service running app
-      setup.sh               --> virtualenv install and python and library install command  
-
-		frontend/ 
-			app/                   --> all of the files to be used in production
-        assets/              --> css and js files and bootstrap files
-          bootstrap/         --> bootstrap js and css files
-          vendor/            --> js files
-        build/               --> builded js and css and minify files 
-        js/                  --> javascript files
-          config/            --> application router and configuration files
-            config.js        --> configuration files
-            routes.js        --> all routing information setting files of this app
-          controllers/       --> directory for application controllers 
-            controllers.js   --> application controllers
-          directives/        --> directory for application directives
-            directives.js    --> application directives
-          lib/               --> directory for libraray files
-            routers.js       --> convient method to manipulate router
-          services/          --> directory for application services
-            services.js      --> application services
-
-          app.js             --> application
-
-        template/            --> templates for angularjs
-          partials/          --> angular view partials (partial html templates)
-          views/             --> angular view (non partial templates)
-          index.html         --> app layout file (the main html template file of the app)
-
-      Gruntfile.js           --> Grunt setting file    
-
-
-
-
-## Contact
-
-For more information please send mail to me. (mhb8436@gmail.com)
+## 라이선스
+MIT License

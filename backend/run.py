@@ -1,9 +1,11 @@
 #!/usr/bin/env python
-from server import app, db
+import os
+from server import create_app
+from config import Config
 
-if __name__ == "__main__":
-	# print app
-	# print app.config['SQLALCHEMY_DATABASE_URI']
-	app.debug = True
-	db.create_all(app=app)
-	app.run(host='0.0.0.0',port=5001, debug=True)
+app = create_app(Config)
+
+if __name__ == '__main__':
+	port = int(os.environ.get('PORT', 5000))
+	debug = os.environ.get('FLASK_DEBUG', '0') == '1'
+	app.run(debug=debug, host='0.0.0.0', port=port)
